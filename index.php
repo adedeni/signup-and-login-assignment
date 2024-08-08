@@ -1,0 +1,81 @@
+<?php
+require_once 'includes/config.inc.php';
+require_once 'includes/signup_view.inc.php';
+
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h3>Sign up</h3><br>
+    <div>
+    <form action="includes/signup.inc.php" method="POST">
+        
+    <input type="text" name="name" placeholder="Enter your full name" required><br><br>
+        <input type="text" name="username" placeholder="Pick a username" required><br><br>
+        <input type="password" name="pwd" placeholder="Set a password" required><br><br>
+        <input type="password" name="cpwd" placeholder="Confirm your password" required><br><br>
+        <input type="text" name="email" placeholder="Input a valid email"required><br><br>
+        <input type="number" name="phone" placeholder="Eneter your phone number"required><br><br>
+        <select name="state" id="" required>
+            <option value="1">select states</option>
+            <option value="abia">Abia</option>
+            <option value="Adamawa">Adamawa</option>
+            <option value="Aquaibom">Akwa-ibom</option>
+            <option value="anambra">Anambra</option>
+            <option value="bauchi">Bauchi</option>
+            <option value="Bayelsa">Bayelsa</option>
+            <option value="Benue">Benue</option>
+            <option value="Borno">Borno</option>
+            <option value="Cross-River">Cross-River</option>
+            <option value="Delta">Delta</option>
+            <option value="Ebonyi">Ebonyi</option>
+            <option value="Edo">Edo</option>
+            <option value="Ekiti">Ekiti</option>
+            <option value="Enugu">Enugu</option>
+            <option value="Gombe">Gombe</option>
+            <option value="Imo">Imo</option>
+            <option value="Jigawa">Jigawa</option>
+            <option value="Kaduna">Kaduna</option>
+            <option value="Kano">Kano</option>
+            <option value="Katsina">Katsina</option>
+            <option value="Kebbi">Kebbi</option>
+            <option value="Kogi">Kogi</option>
+            <option value="Kwara">Kwara</option>
+            <option value="Lagos">Lagos</option>
+            <option value="Nasarawa">Nasarawa</option>
+            <option value="Niger">Niger</option>
+            <option value="Ogun">Ogun</option>
+            <option value="Ondo">Ondo</option>
+            <option value="Osun">Osun</option>
+            <option value="Oyo">Oyo</option>
+            <option value="Plateau">Plateau</option>
+            <option value="Rivers">Rivers</option>
+            <option value="Sokoto">Sokoto</option>
+            <option value="Taraba">Taraba</option>
+            <option value="Yobe">Yobe</option>
+            <option value="Zamfara">Zamfara</option>
+            <option value="FCT-Abuja">FCT-Abuja</option>
+        </select><br><br>
+
+        <label for="Gender">Genders</label><br><br>
+        <label for="male">Male</label>
+        <input type="radio" id="male" name="gender" value="male" required>
+        <label for="female">Female</label>
+        <input type="radio" id="female" name="gender" value="female" required>
+        <br><br>
+        
+        <button>SignUp</button>
+<?php
+    check_signup_errors() 
+        ?>
+    </form>
+    <a href="login.php">Login Here</a>
+</body>
+</html>
