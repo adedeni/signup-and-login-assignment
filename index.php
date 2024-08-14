@@ -9,27 +9,26 @@ require_once 'includes/signup_view.inc.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>Sign Up:</title>
 </head>
+<center>
 <body>
-    
-    <h3>Sign up</h3><br>
-    <div>
+    <br>
+    <h3>Sign up</h3>
     <form action="includes/signup.inc.php" method="POST">
-        
     <input type="text" name="name" placeholder="Enter your full name" required><br><br>
         <input type="text" name="username" placeholder="Pick a username" required><br><br>
         <input type="password" name="pwd" placeholder="Set a password" required><br><br>
         <input type="password" name="cpwd" placeholder="Confirm your password" required><br><br>
         <input type="text" name="email" placeholder="Input a valid email"required><br><br>
-        <input type="number" name="phone" placeholder="Eneter your phone number"required><br><br>
+        <input type="number" name="phone" placeholder="Enter phone number"required><br><br>
         <select name="state" id="" required>
-            <option value="1">select states</option>
-            <option value="abia">Abia</option>
+            <option value="1">Select States</option>
+            <option value="Abia">Abia</option>
             <option value="Adamawa">Adamawa</option>
-            <option value="Aquaibom">Akwa-ibom</option>
-            <option value="anambra">Anambra</option>
-            <option value="bauchi">Bauchi</option>
+            <option value="Aqua-Ibom">Akwa-ibom</option>
+            <option value="Anambra">Anambra</option>
+            <option value="Bauchi">Bauchi</option>
             <option value="Bayelsa">Bayelsa</option>
             <option value="Benue">Benue</option>
             <option value="Borno">Borno</option>
@@ -64,18 +63,20 @@ require_once 'includes/signup_view.inc.php';
             <option value="FCT-Abuja">FCT-Abuja</option>
         </select><br><br>
 
-        <label for="Gender">Genders</label><br><br>
+        <label for="Gender">Gender</label><br><br>
         <label for="male">Male</label>
         <input type="radio" id="male" name="gender" value="male" required>
         <label for="female">Female</label>
         <input type="radio" id="female" name="gender" value="female" required>
         <br><br>
         
-        <button>SignUp</button>
+        <button>Sign Up</button>
 <?php
     check_signup_errors() 
         ?>
     </form>
-    <a href="login.php">Login Here</a>
+    <br>
+    <button><a href="login.php">Login Here</a></button>
 </body>
+</center>
 </html>

@@ -9,9 +9,11 @@ require_once 'includes/login_view.inc.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>Login</title>
 </head>
+<center>
 <body>
+    <br>
 <h3>Login</h3>
 <form action="includes/login.inc.php" method="POST">
         <input type="text" name="username" placeholder = "Type your Username or email or Phone number" required><br><br>
@@ -21,6 +23,8 @@ require_once 'includes/login_view.inc.php';
         <?php
             check_login_errors(); 
         ?>
- <a href="index.php">Register Here</a>
+        <br>
+ <button><a href="index.php">Register Here</a></button>
 </body>
+</center>
 </html>
