@@ -26,6 +26,11 @@ require_once 'includes/login_model.inc.php';
     ?>
     <br>
    <button><a href="edit.php">Profile Update</a></button>
+
+   <br><br>
+      <form action="includes/logout.inc.php" method="POST">
+            <button>logout</button>
+    </form>
 </body>
 </center>
 </html>
