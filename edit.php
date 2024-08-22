@@ -1,3 +1,11 @@
+<?php
+require_once "includes/config.inc.php";
+require_once "includes/edit_model.inc.php";
+if(!isset($_SESSION['user_id'])){
+    header("Location: login.php");
+     die();
+ }
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,16 +15,39 @@
 </head>
 <center>
 <body>
-    <h1>Dashboard / Profile Update</h1>
-    <form action="includes/edit.inc.php" method="post">
-        <input type="text" name="username" value="<?php // echo htmlspecialchars($user['username']); ?>" readonly> <br> <br>
-        <input type="text" name="fullname" value="<?php //echo htmlspecialchars($user['fullname']); ?>" required> <br> <br>
-        <input type="tel" name="phone" value="<?php //echo htmlspecialchars($user['phone']); ?>"> <br> <br>
-        <input type="email" name="email" value="<?php //echo htmlspecialchars($user['email']); ?>"> <br> <br>
-        <input type="text" name="address" value="<?php // echo htmlspecialchars($user['address']); ?>" placeholder="Address">
+    <h1><a href="dashboard.php">Dashboard</a> / Profile Update</h1>
+    <h4>
+    <form action="includes/edit.inc.php" method="POST">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" value="<?php echo htmlspecialchars($_SESSION['user_username']); ?>" style="border: none; font-weight: bold; text-transform: uppercase;" readonly><br><br>
+            <label for="fullname">Full Name:</label>
+            <input type="text" id="fullname" name="fullName" value="<?php echo htmlspecialchars($_SESSION['user_fullName']);?>" style="font-weight: bold; text-transform: uppercase;" required><br><br>
+
+            <label for="current_password">Current Password:</label>
+            <input type="password" id="current_password" name="crpwd" placeholder="Put your current password" required><br><br>
+
+            <label for="new_password">New Password:</label>
+            <input type="password" id="new_password" name="pwd" placeholder="New Password" required><br><br>
+
+            <label for="confirm_password">Confirm New Password:</label>
+            <input type="password" id="confirm_password" name="cpwd" placeholder="Confirm New Password" required><br><br>
+
+            <label for="address">Address:</label>
+            <input type="text" id="address" name="address" placeholder="Input your address"><br><br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($_SESSION["user_email"]); ?>" required><br><br>
+
+            <label for="phoneNumber">Phone Number:</label>
+            <input type="tel" id="phoneNumber" name="phoneNumber" value="<?php echo htmlspecialchars($_SESSION['user_phone']); ?>" required><br><br>
+
+            <button type="submit">Update Details</button>
+            <?php
+        check_edit_errors();
+
+        ?>
     </form>
-    <br> <br>
-    <button><a href="dashboard.php">Dashboard</a></button>
+    </h4>
 </body>
 </center>
 </html>

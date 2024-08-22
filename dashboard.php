@@ -1,4 +1,5 @@
 <?php
+
 require_once 'includes/config.inc.php';
 require_once 'includes/login_view.inc.php';
 require_once 'includes/login_model.inc.php';
@@ -25,8 +26,7 @@ require_once 'includes/login_model.inc.php';
      output_username();
     ?>
     <br>
-   <button><a href="edit.php">Profile Update</a></button>
-
+ <button><a href="edit.php">Edit Profile Details</a></button>
    <br><br>
       <form action="includes/logout.inc.php" method="POST">
             <button>logout</button>

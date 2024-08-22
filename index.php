@@ -20,7 +20,7 @@ require_once 'includes/signup_view.inc.php';
         <input type="text" name="username" placeholder="Pick a username" required><br><br>
         <input type="password" name="pwd" placeholder="Set a password" required><br><br>
         <input type="password" name="cpwd" placeholder="Confirm your password" required><br><br>
-        <input type="text" name="email" placeholder="Input a valid email"required><br><br>
+        <input type="email" name="email" placeholder="Input a valid email"required><br><br>
         <input type="number" name="phone" placeholder="Enter phone number"required><br><br>
         <select name="state" id="" required>
             <option value="1">Select States</option>
@@ -69,11 +69,10 @@ require_once 'includes/signup_view.inc.php';
         <label for="female">Female</label>
         <input type="radio" id="female" name="gender" value="female" required>
         <br><br>
-        
-        <button>Sign Up</button>
-<?php
+        <?php
     check_signup_errors() 
         ?>
+        <button>Sign Up</button>
     </form>
     <br>
     <button><a href="login.php">Login Here</a></button>

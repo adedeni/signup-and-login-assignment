@@ -59,6 +59,21 @@ function does_pwd_match(string $pwd, string $cpwd) {
     }
     
 } 
+function not_number_and_string (string $pwd) {
+    if (!(preg_match('/[a-zA-Z]/', $pwd) && preg_match('/[0-9]/', $pwd))) {
+        return true;
+    } else return false;
+    
+    }
+    function not_upto_six_char (string $pwd) {
+        $newPwd = strlen($pwd);
+        if ($newPwd < 6){
+
+            return true;
+        }else {
+            return false;
+        }
+    }
 
 function is_fullname_long(string $fullname){
     if(!long_name($fullname)){
@@ -68,6 +83,7 @@ function is_fullname_long(string $fullname){
     }
 
 }
+
 
 function validatePhoneNumber($phoneNumber) {
     // Remove all non-digit characters

@@ -10,8 +10,6 @@ function signup_inputs(){
             echo '<input type="text" name="username" placeholder= "username"><br>'.'<br>';
         }
 
-        echo '<input type="password" name="pwd" placeholder = "password"><br>'.'<br>';
-
         if (isset($_SESSION["signup_data"]["email"]) && !isset($_SESSION["errors_signup"]["email_used"])&& !isset($_SESSION["errors_signup"]["invalid_email"])) {
             echo '<input type="text" name="email" placeholder = "email">value="'.$_SESSION["signup_data"]["email"].'">';
 
@@ -21,6 +19,8 @@ function signup_inputs(){
 
         if (isset($_SESSION["signup_data"]["phoneNumber"]) && !isset($_SESSION["errors_signup"]["phonenumber_used"])&& !isset($_SESSION["errors_signup"]["invalid_phonenumber"])) {
             echo '<input type="number" name="phone" placeholder="phone number">'. $_SESSION["signup_data"]["phoneNumber"].'">';
+        } else {
+            echo '<input type="number" name="phone" placeholder="phone number"><br>'.'<br>';
         }
 }
 

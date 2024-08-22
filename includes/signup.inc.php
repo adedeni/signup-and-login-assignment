@@ -47,7 +47,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
         if (is_fullname_long($fullname)) {
             $errors["fullname_long"]=  "Name is too long. Kindly reduce!";
         }
-
+        
+        if (not_number_and_string($pwd)) {
+            $errors["not_number_and_string"] = "Password must contain number and letters";
+        }
+        if (not_upto_six_char($pwd)) {
+            $errors ["not_upto_six_char"] = "Password must be more than 6 characters";
+        }
         require_once 'config.inc.php';
 
 

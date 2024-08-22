@@ -32,6 +32,7 @@ function get_match(string $pwd, String $cpwd){
 
 }
 
+
 function long_name (string $fullname){
 
     $newname = strlen($fullname);
