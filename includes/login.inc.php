@@ -79,6 +79,23 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         die("Query failed: " . $e->getMessage());
     }
 
+    if(isset($_POST['remember_me'])) {
+        // Set cookies for username and password
+        setcookie('username', $_POST['username'], time() + (86400 * 30), "/");
+        setcookie('password', $_POST['password'], time() + (86400 * 30), "/");
+    } else {
+        // If the user didn't check 'Remember Me', clear the cookies
+        if(isset($_COOKIE['username'])) {
+            setcookie('username', '', time() - 3600, "/");
+        }
+        if(isset($_COOKIE['password'])) {
+            setcookie('password', '', time() - 3600, "/");
+        }
+    }
+    
+    // Redirect to the home page or another page after login
+    header("Location: ../login.php");
+
     } else {
         header("Location: ../login.php");
         die();
