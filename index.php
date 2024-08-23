@@ -75,7 +75,8 @@ require_once 'includes/signup_view.inc.php';
         <button>Sign Up</button>
     </form>
     <br>
-    <button><a href="login.php">Login Here</a></button>
+    <h4>Already have account?</h4>
+    <button><a style="text-decoration: none;" href="login.php">Login Here</a></button>
 </body>
 </center>
 </html>

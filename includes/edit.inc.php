@@ -1,10 +1,7 @@
 <?php
-echo "fjksvba";
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     $username = $_POST['username'];
-    $pwd = $_POST['pwd'];
     $crpwd = $_POST['crpwd'];
-    $cpwd = $_POST['cpwd'];
     $fullName = $_POST['fullName'];
     $address = $_POST['address'];
     $email = $_POST['email'];
@@ -12,12 +9,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     
     
     try {
-        require_once "dbh.inc.php";
+    require_once "dbh.inc.php";
     require_once 'edit_model.inc.php';
     require_once 'signup_contr.inc.php';
 
     $errors = [];
-    if (is_input_empty($fullName,$username,$pwd,$phoneNumber,$email,$cpwd,$address )) {
+    if (field_empty($fullName,$username,$crpwd,$phoneNumber,$email,$address)) {
         $errors["empty_input"] = "fill in all fields!";
 
     } 
@@ -28,22 +25,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
         $errors["invalid_email"] = "invalid email used!";
 
     }
-    if (does_pwd_match($pwd, $cpwd)){
-        $errors["pwd_match"] = "password don't match";
-
-    }
-
-    if(not_upto_six_char($pwd)){
-        $errors["pwd_six_char"] = "Password not up to six characters"; 
-    }
-    if (not_number_and_string($pwd)) {
-        $errors["pwd_error"] = "Password must contain both number and alphabet";
-     }
     if (!validatePhoneNumber($phoneNumber)){
         $errors[" invalid_phonenumber"] = "incorrect phone number formart";
 
     }
-    if (password_verify($crpwd,$result['pwd'])){
+
+    if (!password_verify($crpwd,$result['pwd'])){
         $errors["invalid_password"]="incorect password";
      }
      if (is_fullname_long($fullName)){
@@ -59,8 +46,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
          die();
      }
  
-     updateUserDetails($pdo, $username, $fullName, $pwd, $address, $email, $phoneNumber);
-     header("Location: ../dashboard.php?edit=success"); 
+     updateUserDetails($pdo, $username, $fullName, $address, $email, $phoneNumber, $address);
+        $_SESSION['user_fullName'] = htmlspecialchars($fullName);
+        $_SESSION['user_email'] = htmlspecialchars($email);
+        $_SESSION['user_phone'] = htmlspecialchars($phoneNumber);
+        $_SESSION['user_gender'] = htmlspecialchars($result["gender"]);
+        $_SESSION['user_state'] = htmlspecialchars($result["state"]);
+        $_SESSION['user_address'] = htmlspecialchars($address);
+        
+        $_SESSION["last_regeneration"] = time();
+     header("Location: ../dashboard.php"); 
+     
       
      $pdo = null;
      $stmt = null;

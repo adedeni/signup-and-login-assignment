@@ -2,37 +2,26 @@
  declare(strict_types=1);
 function getUserByUsername(object $pdo, string $username) {
     // Database connection
-    $query = "SELECT * FROM users WHERE username = :username;";
+    $query = 'SELECT * FROM users WHERE username = :username;';
     $stmt = $pdo->prepare($query);
     $stmt->bindparam(":username",$username);
+    $stmt ->execute();
 
     $result = $stmt ->fetch(PDO::FETCH_ASSOC);
+    return $result;
 }
 
-function updateUserDetails(object $pdo, string $username, string $fullName, string $pwd, string $address, string $email, string $phoneNumber) {
+function updateUserDetails(object $pdo, string $username, string $fullName, string $address, string $email, string $phoneNumber) {
     // Database connection
 
-    $query = "UPDATE users SET fullName = :fullName, pwd = :pwd, address = :address, email = :email, phoneNumber = :phoneNumber WHERE username = :username;";
+    $query = "UPDATE users SET fullName = :fullName, address = :address, email = :email, phoneNumber = :phoneNumber WHERE username = :username;";
     $stmt = $pdo->prepare($query);
-    $options = [
-        "cost" => 12
-    ];
-    $hashpwd = password_hash($pwd, PASSWORD_BCRYPT, $options);
         $stmt->bindparam(":fullName",$fullName);
         $stmt->bindparam(":username", $username);
         $stmt->bindparam(":email", $email);
         $stmt->bindparam(":phoneNumber", $phoneNumber);
-        $stmt -> bindparam(":pwd", $hashpwd);
         $stmt -> bindparam(":address", $address);
     return $stmt->execute();
-}
-function get_match(string $pwd, String $cpwd){
-    if ($pwd===$cpwd){
-        return true;
-    }else {
-        return false;
-    }
-
 }
 function long_name (string $fullName){
 
@@ -41,6 +30,22 @@ function long_name (string $fullName){
 
         return true;
     }else {
+        return false;
+    }
+}
+function field_empty(string $username, string $crpwd, string $email, string $fullname, string $phoneNumber, string $address) {
+    if (empty($username) || empty($crpwd) || empty($email) || empty($fullname)|| empty($address) || empty($phoneNumber)) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+function is_password_wrong( string $crpwd, string $hashed) {
+    if (!password_verify($crpwd,$hashed)) {
+        return true;
+    } else {
         return false;
     }
 }

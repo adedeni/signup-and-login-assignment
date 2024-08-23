@@ -16,14 +16,17 @@ require_once 'includes/login_view.inc.php';
     <br>
 <h3>Login</h3>
 <form action="includes/login.inc.php" method="POST">
-        <input type="text" name="username" placeholder = "Type your Username or email or Phone number" required><br><br>
-        <input type="password" name="pwd" placeholder = "password" required><br><br>
-        <button>Login</button>
+        <input type="text" name="username" placeholder = "Username/Email/Phone Number" required><br><br>
+        <input type="password" name="pwd" placeholder = "Password" required><br><br>
+        <label for="remember_me">Remember me</label>
+        <input type="checkbox" name="remember" style="margin-right: 40px;"> <button>Login</button>
 </form> 
         <?php
             check_login_errors(); 
         ?>
         <br>
+        <a href="forgetpwdemail.php" style="text-decoration: none;">Forget Password?</a>
+        <h4>Don't have an account?</h4>
  <button><a href="index.php">Register Here</a></button>
 </body>
 </center>

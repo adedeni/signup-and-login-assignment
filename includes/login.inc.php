@@ -57,6 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $_SESSION['user_phone'] = htmlspecialchars($result["phoneNumber"]);
         $_SESSION['user_gender'] = htmlspecialchars($result["gender"]);
         $_SESSION['user_state'] = htmlspecialchars($result["state"]);
+        $_SESSION['user_address'] = htmlspecialchars($result ["address"]);
         $_SESSION["last_regeneration"] = time();
 
         if ($result->num_rows === 1) {

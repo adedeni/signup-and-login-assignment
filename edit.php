@@ -22,21 +22,14 @@ if(!isset($_SESSION['user_id'])){
             <input type="text" id="username" name="username" value="<?php echo htmlspecialchars($_SESSION['user_username']); ?>" style="border: none; font-weight: bold; text-transform: uppercase;" readonly><br><br>
             <label for="fullname">Full Name:</label>
             <input type="text" id="fullname" name="fullName" value="<?php echo htmlspecialchars($_SESSION['user_fullName']);?>" style="font-weight: bold; text-transform: uppercase;" required><br><br>
-
-            <label for="current_password">Current Password:</label>
-            <input type="password" id="current_password" name="crpwd" placeholder="Put your current password" required><br><br>
-
-            <label for="new_password">New Password:</label>
-            <input type="password" id="new_password" name="pwd" placeholder="New Password" required><br><br>
-
-            <label for="confirm_password">Confirm New Password:</label>
-            <input type="password" id="confirm_password" name="cpwd" placeholder="Confirm New Password" required><br><br>
+            <label for="new_password">Password:</label>
+            <input type="password" id="new_password" name="crpwd" placeholder="Input Password" required><br><br>
 
             <label for="address">Address:</label>
             <input type="text" id="address" name="address" placeholder="Input your address"><br><br>
 
             <label for="email">Email:</label>
-            <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($_SESSION["user_email"]); ?>" required><br><br>
+            <input type="text" id="email" name="email" value="<?php echo htmlspecialchars($_SESSION["user_email"]); ?>" required><br><br>
 
             <label for="phoneNumber">Phone Number:</label>
             <input type="tel" id="phoneNumber" name="phoneNumber" value="<?php echo htmlspecialchars($_SESSION['user_phone']); ?>" required><br><br>
@@ -44,6 +37,9 @@ if(!isset($_SESSION['user_id'])){
             <button type="submit">Update Details</button>
             <?php
         check_edit_errors();
+        
+
+      
 
         ?>
     </form>
