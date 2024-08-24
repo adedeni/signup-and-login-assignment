@@ -69,7 +69,22 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 die();
             }
         }
-
+// Check if "Remember Me" is checked
+if (isset($_POST['remember_me'])) {
+    // Set cookies for 30 days
+    setcookie('username', $username, time() + (86400 * 30), "/");
+    
+    
+    setcookie('pwd', $pwd, time() + (86400 * 30), "/");
+} else {
+    // If not checked, clear any existing cookies
+    if (isset($_COOKIE['username'])) {
+        setcookie('username', '', time() - 3600, "/");
+    }
+    if (isset($_COOKIE['pwd'])) {
+        setcookie('pwd', '', time() - 3600, "/");
+    }
+}
         header("Location: ../dashboard.php");
         $pdo = null;
         $stmt = null;
@@ -78,24 +93,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     } catch (PDOException $e) {
         die("Query failed: " . $e->getMessage());
     }
-
-    if(isset($_POST['remember_me'])) {
-        // Set cookies for username and password
-        setcookie('username', $_POST['username'], time() + (86400 * 30), "/");
-        setcookie('password', $_POST['password'], time() + (86400 * 30), "/");
-    } else {
-        // If the user didn't check 'Remember Me', clear the cookies
-        if(isset($_COOKIE['username'])) {
-            setcookie('username', '', time() - 3600, "/");
-        }
-        if(isset($_COOKIE['password'])) {
-            setcookie('password', '', time() - 3600, "/");
-        }
-    }
-    
-    // Redirect to the home page or another page after login
-    header("Location: ../login.php");
-
     } else {
         header("Location: ../login.php");
         die();
