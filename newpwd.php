@@ -10,7 +10,7 @@
     <br>
     <h1>Set new password here</h1>
     <p>Password must be minimum of six characters long and must contain at least one alphabet and one number.</p> <br>
-    <form action="includes/" method="POST">
+    <form action="includes/newpwd.inc.php" method="POST">
     <input type="password" name="pwd" placeholder="Set a new password" required><br><br>
     <input type="password" name="cpwd" placeholder="Confirm new password" required><br><br>
     <button>Change Password</button>

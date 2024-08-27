@@ -9,9 +9,9 @@
 <body>
     <br>
     <h1>Forget Password</h1>
-    <p>Enter your email address below and we'll send you an OTP to validate your new password.</p> <br>
-    <form action="includes/" method="POST">
-        <input type="email"  name="email" placeholder="Input your registered Email" required> <br> <br>
+    <p>Enter the OTP sent to your email below, to validate your new password.</p> <br>
+    <form action="includes/otp.inc.php" method="POST">
+        <input type="number"  name="otp" placeholder="Input OTP here" required> <br> <br>
         <input type="submit" name= "submit">
     </form>
     <h4>Login to your account?</h4>
