@@ -1,3 +1,9 @@
+<?php 
+
+require_once 'includes/config.inc.php';
+require_once 'includes/email_contr.inc.php';
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,6 +19,9 @@
     <form action="includes/email.inc.php" method="POST">
         <input type="email"  name="email" placeholder="Input your registered Email" required> <br> <br>
         <input type="submit" name= "submit">
+        <?php
+        check_email_errors();
+        ?>
     </form>
     <h4>Login to your account?</h4>
     <button><a style="text-decoration: none;" href="login.php">Login</a></button>

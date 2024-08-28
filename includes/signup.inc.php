@@ -1,6 +1,6 @@
 <?php
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+if ($_SERVER['REQUEST_METHOD'] === 'POST'){
     $fullname = ($_POST['name']);
     $username = ($_POST['username']);
     $pwd = ($_POST['pwd']);

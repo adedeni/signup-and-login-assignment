@@ -72,10 +72,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 // Check if "Remember Me" is checked
 if (isset($_POST['remember_me'])) {
     // Set cookies for 30 days
-    setcookie('username', $username, time() + (86400 * 30), "/");
+    setcookie('username', $username, time() + (86400 * 0.1), "/");
     
     
-    setcookie('pwd', $pwd, time() + (86400 * 30), "/");
+    setcookie('pwd', $pwd, time() + (86400 * 0.1), "/");
 } else {
     // If not checked, clear any existing cookies
     if (isset($_COOKIE['username'])) {
