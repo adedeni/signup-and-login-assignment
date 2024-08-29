@@ -17,14 +17,17 @@ function verifyOtpEmail(object $pdo, string $email ) {
  $result = $stmt ->fetch(PDO::FETCH_ASSOC);
  return $result;
 }
+function generateOtp() {
+    return rand(100000, 999999);
+}
 
-function storeOtp(object $pdo, string $otp, string $email ){
-$query = "UPDATE users SET otp = :otp WHERE email = :email;";
-$stmt = $pdo->prepare($query);
-$stmt->bindparam(":otp", $otp);
-$stmt->bindparam(":email", $email);
-$stmt->execute();
-return $stmt->execute();
+
+function storeOtp(object $pdo, string $otp, string $email) {
+    $query = "UPDATE users SET otp = :otp WHERE email = :email;";
+    $stmt = $pdo->prepare($query);
+    $stmt->bindParam(":otp", $otp);
+    $stmt->bindParam(":email", $email);
+    return $stmt->execute();
 }
 
 function verifyOtp(object $pdo, string $otp, string $email ){
@@ -59,12 +62,7 @@ function is_email_registered(object $pdo, string $email) {
         return false;
     }
 }
-function generateOTP() {
-    $otp = rand(100000, 999999);
 
-    return $otp;
-}
-$otp = generateOTP();
 function check_email_errors(){
     if (isset($_SESSION["errors_forget"])) {
         foreach ($_SESSION["errors_forget"] as $error) {

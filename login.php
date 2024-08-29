@@ -26,7 +26,7 @@ require_once 'includes/login_view.inc.php';
             check_login_errors(); 
         ?>
         <br>
-        <a href="forgetpwdemail.php" style="text-decoration: none;">Forget Password?</a>
+        <a href="email.php" style="text-decoration: none;">Forget Password?</a>
         <h4>Don't have an account?</h4>
  <button><a href="index.php">Register Here</a></button>
 </body>

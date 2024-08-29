@@ -1,5 +1,7 @@
 <?php
+
 session_start();
+
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $email = ($_POST['email']);
 
@@ -8,41 +10,43 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         require_once 'email_contr.inc.php';
 
         $errors = [];
-
         if (emailEmpty($email)) {
             $errors["empty_input"] = "Fill in the email!";
         }
-        if(!is_email_registered($pdo, $email)){
-            $errors["unregistered_email"] = " email not registered!";
-
+        if (!is_email_registered($pdo, $email)) {
+            $errors["unregistered_email"] = "Email not registered!";
         }
         if (is_email_invalid($email)) {
-            $errors["invalid_email"] = "invalid email used!";
+            $errors["invalid_email"] = "Invalid email used!";
         }
 
-        require_once 'config.inc.php';
-
+        // If there are validation errors, store them in session and redirect
         if ($errors) {
             $_SESSION["errors_forget"] = $errors;
             header("Location: ../email.php");
             die();
         }
-        if(is_email_registered($pdo, $email)){
-            storeOtp($pdo,$email,$otp); 
+
+        // If email is valid and registered, generate OTP and store it
+        $otp = generateOtp();
+        if (storeOtp($pdo, $otp, $email)) {
             $_SESSION["email"] = $email;
             header("Location: ../otp.php");
-        }                      
-        
-        
+            die();
+        } else {
+            // Handle case where OTP was not stored successfully
+            $errors["otp_store_failed"] = "Failed to store OTP. Please try again.";
+            $_SESSION["errors_forget"] = $errors;
+            header("Location: ../email.php");
+            die();
+        }
         $pdo = null;
         $stmt = null;
 
-        die();
-
- }  catch (PDOException $e){
-    die("Query failed: ". $e->getmessage());
-}
-}else {
-header("Location:../email.php");
-die();
+    } catch (PDOException $e) {
+        die("Query failed: " . $e->getMessage());
+    }
+} else {
+    header("Location: ../email.php");
+    die();
 }
