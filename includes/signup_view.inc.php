@@ -31,7 +31,7 @@ function check_signup_errors()
 
         echo "<br>";
         foreach ($errors as $error) {
-            echo '<p>'.$error.'</p>';
+            echo "<p style='color:red;'>$error</p>";
         }
 
         unset($_SESSION['errors_signup']);

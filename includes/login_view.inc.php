@@ -20,12 +20,12 @@ function check_login_errors()
 
         echo "<br>";
         foreach ($errors as $error) {
-            echo '<p>'.$error.'</p>';
+            echo "<p style='color:red;'>$error</p>";
         }
 
         unset($_SESSION['errors_login']);
     } else if (isset($_GET["login"]) && $_GET["login"] ==="success") {
         echo '<br>';
-        echo '<h1>login success</h1>';
+        echo '<h1 "style=color:green";>login success</h1>';
     }
 }

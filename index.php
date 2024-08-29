@@ -69,11 +69,12 @@ require_once 'includes/signup_view.inc.php';
         <label for="female">Female</label>
         <input type="radio" id="female" name="gender" value="female" required>
         <br><br>
-        <?php
-    check_signup_errors() 
-        ?>
+        
         <button>Sign Up</button>
     </form>
+    <?php
+    check_signup_errors() 
+        ?>
     <br>
     <h4>Already have account?</h4>
     <button><a style="text-decoration: none;" href="login.php">Login Here</a></button>
