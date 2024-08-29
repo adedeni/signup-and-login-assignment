@@ -27,14 +27,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             die();
         }
 
-        // If email is valid and registered, generate OTP and store it
+        
         $otp = generateOtp();
         if (storeOtp($pdo, $otp, $email)) {
             $_SESSION["email"] = $email;
             header("Location: ../otp.php");
             die();
         } else {
-            // Handle case where OTP was not stored successfully
             $errors["otp_store_failed"] = "Failed to store OTP. Please try again.";
             $_SESSION["errors_forget"] = $errors;
             header("Location: ../email.php");
