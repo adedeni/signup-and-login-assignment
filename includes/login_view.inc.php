@@ -1,15 +1,11 @@
 <?php
 
 declare(strict_types=1);
-
-
 function output_username(){
-    
-
     if (isset($_SESSION["user_id"])){
-        echo '<h1> Welcome</h1> <br> ' .'<h1>'. $_SESSION["user_username"].'<br>'.$_SESSION["user_fullName"].'<br>'.$_SESSION["user_email"].'<br>'.$_SESSION["user_phone"].'<br>'.$_SESSION["user_gender"].'<br>'.$_SESSION["user_state"]. '<br>' .$_SESSION["user_address"];
+        echo '<h1>Welcome, ' . $_SESSION["user_username"] . "!" . '<h3>' . "Username: " . $_SESSION["user_username"].'<br>'.'<br>'."Fullname: " . $_SESSION["user_fullName"].'<br>'.'<br>'."Email: ".$_SESSION["user_email"].'<br>'.'<br>'."Phone Number: ".$_SESSION["user_phone"].'<br>'.'<br>'."Gender: ".$_SESSION["user_gender"].'<br>'.'<br>'."State: ".$_SESSION["user_state"].'<br>'.'<br>'."Address: " .$_SESSION["user_address"];
     } else {
-        echo '<p>Login Failed </p>';
+        echo '<p>Login Failed';
     }
 }
 

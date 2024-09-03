@@ -26,7 +26,7 @@ if(!isset($_SESSION['user_id'])){
             <input type="password" id="new_password" name="crpwd" placeholder="Input Password" required><br><br>
 
             <label for="address">Address:</label>
-            <input type="text" id="address" name="address" placeholder="Input your address"><br><br>
+            <input type="text" id="address" name="address" placeholder="Input your address" value="<?php echo htmlspecialchars($_SESSION['user_address']); ?>"><br><br>
 
             <label for="email">Email:</label>
             <input type="text" id="email" name="email" value="<?php echo htmlspecialchars($_SESSION["user_email"]); ?>" required><br><br>

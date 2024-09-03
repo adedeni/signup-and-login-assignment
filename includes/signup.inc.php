@@ -14,6 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         require_once 'dbh.inc.php';
         require_once 'signup_model.inc.php';
         require_once 'signup_contr.inc.php';
+        require_once 'signup_view.inc.php';
 
         $errors = [];
         if (is_input_empty($fullname, $username, $pwd, $phoneNumber, $email, $cpwd, $gender, $state)) {
@@ -37,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 
         }
         if (!validatePhoneNumber($phoneNumber)){
-            $errors[" invalid_phonenumber"]= "Incorrect phone number formart. Check again";
+            $errors["invalid_phonenumber"]= "Incorrect phone number format. Check again";
 
         }
         
@@ -61,17 +62,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
             $_SESSION["errors_signup"] = $errors;
             
             $signupdata = [
+                "name" => $fullname,
                 "username" => $username,
                 "email" => $email,
-                "phoneNumber"=> $phoneNumber,
+                "phone"=> $phoneNumber,
                 "gender" => $gender,
                 "state" => $state
             ];
             $_SESSION["signup_data"] = $signupdata;
-            
-            header("Location: ../index.php".var_dump($errors));
+            header("Location: ../index.php");
             die();
-
         }
         
 

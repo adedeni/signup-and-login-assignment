@@ -1,7 +1,6 @@
 <?php
 require_once 'includes/config.inc.php';
 require_once 'includes/signup_view.inc.php';
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,19 +8,18 @@ require_once 'includes/signup_view.inc.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Sign Up:</title>
+    <title>Sign Up</title>
 </head>
 <center>
 <body>
     <br>
     <h3>Sign up</h3>
     <form action="includes/signup.inc.php" method="POST">
-    <input type="text" name="name" placeholder="Enter your full name" required><br><br>
-        <input type="text" name="username" placeholder="Pick a username" required><br><br>
+    <?php
+        signup_inputs();
+    ?>
         <input type="password" name="pwd" placeholder="Set a password" required><br><br>
         <input type="password" name="cpwd" placeholder="Confirm your password" required><br><br>
-        <input type="email" name="email" placeholder="Input a valid email"required><br><br>
-        <input type="number" name="phone" placeholder="Enter phone number"required><br><br>
         <select name="state" id="" required>
             <option value="1">Select States</option>
             <option value="Abia">Abia</option>
@@ -62,19 +60,17 @@ require_once 'includes/signup_view.inc.php';
             <option value="Zamfara">Zamfara</option>
             <option value="FCT-Abuja">FCT-Abuja</option>
         </select><br><br>
-
         <label for="Gender">Gender</label><br><br>
         <label for="male">Male</label>
-        <input type="radio" id="male" name="gender" value="male" required>
+        <input type="radio" id="male" name="gender" value="Male" required>
         <label for="female">Female</label>
-        <input type="radio" id="female" name="gender" value="female" required>
+        <input type="radio" id="female" name="gender" value="Female" required>
         <br><br>
-        
         <button>Sign Up</button>
     </form>
     <?php
-    check_signup_errors() 
-        ?>
+    check_signup_errors();
+    ?>
     <br>
     <h4>Already have account?</h4>
     <button><a style="text-decoration: none;" href="login.php">Login Here</a></button>
