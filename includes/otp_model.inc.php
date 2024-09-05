@@ -27,7 +27,12 @@ function isOtpExpired($updatedAt, $exptime) {
     $current_time = time();
     $otp_timestamp = strtotime($updatedAt);
     $time_difference = $current_time - $otp_timestamp;
-    return $time_difference > $exptime;
+    
+    if ($time_difference > $exptime) {
+        return true;
+    }else{
+        return false;
+    }
 }
 
 function regenerateOtp(object $pdo, string $email) {
